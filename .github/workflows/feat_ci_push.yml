@@ -1,0 +1,79 @@
+name: Feat CI Push
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - 'release-*.*.*'
+      - development
+    paths:
+      - 'cmd/**/*' # Trigger if any file changes in the defined directory
+      - 'internal/**/*'
+      - 'pkg/**/*'
+      - 'go.mod'
+      - 'go.sum'
+      - 'Makefile'
+      - '.github/workflows/feat_ci_push.yml'
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  PROJECT_NAME: ${{ github.event.repository.name }}
+
+jobs:
+  lint-format-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.26.5
+          cache: true
+          cache-dependency-path: go.sum
+
+      - name: Install golangci-lint
+        run: |
+          go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+
+      - name: Run Linter
+        run: make lint
+
+      - name: Check Formatting
+        run: make format-check
+          
+  build-and-unit-tests:
+    needs: lint-format-check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.26.5
+          cache: true
+          cache-dependency-path: go.sum
+    
+      - name: Install gocover-cobertura
+        run: go install github.com/boumenot/gocover-cobertura@latest
+
+      - name: Download dependencies
+        run: go mod tidy
+
+      - name: Run unit tests with coverage threshold
+        run: make test-unit
+      
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: .reports/pipelines/SDLC/${{ env.PROJECT_NAME }}-coverage.out

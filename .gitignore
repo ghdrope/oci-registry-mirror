@@ -1,0 +1,64 @@
+# If you prefer the allow list template instead of the deny list, see community template:
+# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
+#
+# =======================
+# Go build artifacts
+# =======================
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# =======================
+# Dependency directories
+# =======================
+/vendor/
+
+# =======================
+# Go workspace
+# =======================
+go.work
+go.work.sum
+
+# =======================
+# Environment files
+# =======================
+.env
+.env.*
+
+# =======================
+# IDE / Editor files
+# =======================
+.idea/
+*.swp
+*.swo
+
+# =======================
+# OS generated files
+# =======================
+.DS_Store
+Thumbs.db
+
+# =======================
+# Go module cache & binaries
+# =======================
+/bin/
+/pkg/mod/
+/tmp/
+
+# =======================
+# Project-specific dirs
+# =======================
+**/.bin/
+**/.reports/
+**/.cache/
+
+# =======================
+# Debug
+# =======================
+**/*.db
+**/*.log*
+**/__debug_bin*
