@@ -1,0 +1,105 @@
+name: Docker Publish
+
+on:
+  push:
+    branches:
+      - '*.*.*-rc*'
+    tags:
+      - '*.*.*'
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  REGISTRY: ghcr.io
+
+jobs:
+  docker-build-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Prepare tags and metadata
+        id: prep
+        run: |
+          IMG_TAG=${GITHUB_REF_NAME}
+
+          # Remove "v" prefix if exists
+          CLEAN_TAG=${IMG_TAG#v}
+
+          IMAGE=${{ env.REGISTRY }}/${{ github.repository }}
+
+          TAGS="${IMAGE}:${CLEAN_TAG}"
+
+          echo "🔖 Tag base: $CLEAN_TAG"
+
+          # Detect RC
+          if [[ "$CLEAN_TAG" =~ -rc[0-9]+$ ]]; then
+            echo "⚡ RC build detected"
+          else
+            echo "✅ Release / patch build detected"
+
+            # latest
+            TAGS="$TAGS,${IMAGE}:latest"
+
+            # major.minor
+            if [[ "$CLEAN_TAG" =~ ^([0-9]+)\.([0-9]+)\.[0-9]+(-patch[0-9]+)?$ ]]; then
+              MM="${BASH_REMATCH[1]}.${BASH_REMATCH[2]}"
+              TAGS="$TAGS,${IMAGE}:${MM}"
+              echo "➕ Adding major.minor tag: $MM"
+            fi
+          fi
+
+          BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          echo "TAGS=$TAGS" >> $GITHUB_OUTPUT
+          echo "VERSION=$CLEAN_TAG" >> $GITHUB_ENV
+          echo "BUILD_DATE=$BUILD_DATE" >> $GITHUB_ENV
+
+      - name: Generate OCI labels
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository }}
+          labels: |
+            org.opencontainers.image.title=${{ github.repository }}
+            org.opencontainers.image.description=An image with ${{ github.repository }} binary installed
+            org.opencontainers.image.source=${{ github.repositoryUrl }}
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.created=${{ env.BUILD_DATE }}
+            org.opencontainers.image.vendor=Pedro Cozinheiro
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          driver: docker-container
+          driver-opts: image=moby/buildkit:latest
+          buildkitd-flags: --allow-insecure-entitlement network.host
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Dockerfile
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ steps.prep.outputs.TAGS }}
+          labels: ${{ steps.meta.outputs.labels }}
+          provenance: false
+          sbom: false
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            VERSION=${{ env.VERSION }}
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            GIT_COMMIT=${{ github.sha }}
+            
