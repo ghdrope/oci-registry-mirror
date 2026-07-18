@@ -3,14 +3,18 @@
   "extends": [
     "config:recommended"
   ],
-  "baseBranches": ["development"],
+  "baseBranchPatterns": [
+    "development"
+  ],
   "useBaseBranchConfig": "merge",
   "assignees": ["ghdrope"],
   "reviewers": ["ghdrope"],
   "packageRules": [
     {
-      "matchPackagePatterns": ["*"],
-      "reviewers": ["ghdrope"]
+      "reviewers": ["ghdrope"],
+      "matchPackageNames": [
+        "*"
+      ]
     }
   ]
 }
