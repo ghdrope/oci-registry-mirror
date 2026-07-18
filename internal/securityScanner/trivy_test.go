@@ -76,6 +76,16 @@ func TestCheckVulnerabilities(t *testing.T) {
 			oldExecCommand := execCommandContext
 			defer func() { execCommandContext = oldExecCommand }()
 
+			oldLookPath := lookPath
+			defer func() { lookPath = oldLookPath }()
+
+			lookPath = func(file string) (string, error) {
+				if file == "trivy" {
+					return "/usr/local/bin/trivy", nil
+				}
+				return "", exec.ErrNotFound
+			}
+
 			execCommandContext = func(ctx context.Context, name string, args ...string) *exec.Cmd {
 				// Safety check: ensure we are intercepting the intended binary target call
 				if name != "trivy" {
