@@ -3,6 +3,8 @@ github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc h1:U9qPSI2PIWSS1
 github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/ghdrope/go-version v0.0.2 h1:ILDSOrOD+npIecMFh7Z6C7ksNIDuzWHq8ap73USd0C8=
 github.com/ghdrope/go-version v0.0.2/go.mod h1:pslwl4lF/iKVEJ1qScpg0fk0bvZZRcG2n+M9GEfjKh8=
+github.com/ghdrope/go-version v0.0.3 h1:sN+btDDQTCOYMlGYpa68UOHMtb4aHQgiWj/YvqDxgu8=
+github.com/ghdrope/go-version v0.0.3/go.mod h1:pslwl4lF/iKVEJ1qScpg0fk0bvZZRcG2n+M9GEfjKh8=
 github.com/inconshreveable/mousetrap v1.1.0 h1:wN+x4NVGpMsO7ErUn/mUI3vEoE6Jt13X2s0bqwp9tc8=
 github.com/inconshreveable/mousetrap v1.1.0/go.mod h1:vpF70FUmC8bwa3OWnCshd2FqLfsEA9PFc4w1p2J65bw=
 github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 h1:Jamvg5psRIccs7FGNTlIRMkT8wgtp5eCXdBlqhYGL6U=
