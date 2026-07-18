@@ -7,8 +7,8 @@
     "development"
   ],
   "useBaseBranchConfig": "merge",
-  "assignees": ["ghdrope"],
   "reviewers": ["ghdrope"],
+  "labels": ["renovate"],
   "packageRules": [
     {
       "reviewers": ["ghdrope"],
