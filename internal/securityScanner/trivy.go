@@ -8,6 +8,7 @@ import (
 )
 
 var execCommandContext = exec.CommandContext
+var lookPath = exec.LookPath
 
 // TrivyScanResult represents the minimal JSON structure returned by Trivy
 // that we need to inspect to determine if vulnerabilities were found.
@@ -21,7 +22,7 @@ type TrivyScanResult struct {
 // HIGH and CRITICAL vulnerabilities. It returns true if any vulnerabilities are found.
 func CheckVulnerabilities(ctx context.Context, image string) (bool, error) {
 	// Ensure trivy binary is present in the system path
-	if _, err := exec.LookPath("trivy"); err != nil {
+	if _, err := lookPath("trivy"); err != nil {
 		return false, fmt.Errorf("trivy binary not found in PATH: %w", err)
 	}
 
