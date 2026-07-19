@@ -11,7 +11,7 @@ import (
 	securityscanner "github.com/ghdrope/oci-registry-mirror/internal/securityScanner"
 	"github.com/ghdrope/oci-registry-mirror/pkg/env"
 	"go.uber.org/zap"
-	"gopkg.in/yaml.v3"
+	"sigs.k8s.io/yaml"
 )
 
 const imagesFilePath = "images.yaml"
