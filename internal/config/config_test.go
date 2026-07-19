@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"gopkg.in/yaml.v3"
+	"sigs.k8s.io/yaml"
 )
 
 // TestConfigParsing verifies that the images.yaml configuration parsing
