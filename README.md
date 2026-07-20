@@ -83,37 +83,52 @@ This pipeline setup closes the automation loop:
 
 ```yaml
 stages:
-  - test
-  - deploy
+  - Security
+  - Validate
+  - Mirror
 
 variables:
   REGISTRY_USERNAME: $REGISTRY_USERNAME
   REGISTRY_PASSWORD: $REGISTRY_PASSWORD
 
-# --- Verification for Feature Branches ---
-verify-images-mr:
-  stage: test
+# Runs on all branches and merge requests before any other step
+security-scan:
+  stage: Security
   tags:
     - docker
   image:
     name: ghcr.io/ghdrope/oci-registry-mirror:latest
     entrypoint: [""]
   script:
-    - oci-registry-mirror run --dry-run
     - oci-registry-mirror scan
   rules:
-    - if: $CI_COMMIT_BRANCH !=$CI_DEFAULT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == "merge_request_events"
+    - if: $CI_COMMIT_BRANCH
 
-# --- Production Pushes ---
-mirror-images-main:
-  stage: deploy
+# Runs only on feature branches to validate changes
+validate:
+  stage: Validate
   tags:
     - docker
   image:
     name: ghcr.io/ghdrope/oci-registry-mirror:latest
     entrypoint: [""]
   script:
-    - oci-registry-mirror run
+    - oci-registry-mirror mirror --dry-run
   rules:
-    - if: $CI_COMMIT_BRANCH ==$CI_DEFAULT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == "merge_request_events"
+    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
+
+# Runs only on the default branch to sync images
+mirror-images:
+  stage: Mirror
+  tags:
+    - docker
+  image:
+    name: ghcr.io/ghdrope/oci-registry-mirror:latest
+    entrypoint: [""]
+  script:
+    - oci-registry-mirror mirror
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 ```
