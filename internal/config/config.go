@@ -7,9 +7,9 @@ type Config struct {
 
 // ImageEntry defines the source, and destination container registries, and tag to be mirrored.
 type ImageEntry struct {
-	Name             string `yaml:"name"`
-	Source           string `yaml:"source"`
-	Destination      string `yaml:"destination"`
-	Tag              string `yaml:"tag"`
-	IgnoreSeverities bool   `yaml:"ignore-severities"`
+	Name             string `yaml:"name" json:"name"`
+	Source           string `yaml:"source" json:"source"`
+	Destination      string `yaml:"destination" json:"destination"`
+	Tag              string `yaml:"tag" json:"tag"`
+	IgnoreSeverities bool   `yaml:"ignore-severities" json:"ignore-severities"`
 }
