@@ -6,7 +6,7 @@ require (
 	github.com/ghdrope/go-version v0.0.3
 	github.com/spf13/cobra v1.10.2
 	go.uber.org/zap v1.28.0
-	k8s.io/sample-controller v0.36.2
+	k8s.io/sample-controller v0.36.3
 	sigs.k8s.io/yaml v1.6.0
 )
 
