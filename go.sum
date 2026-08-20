@@ -36,5 +36,7 @@ k8s.io/sample-controller v0.36.2 h1:rMHn1voCuJD3cpS/3EM91UGFU2NH73DUHjIhBJAOqN8=
 k8s.io/sample-controller v0.36.2/go.mod h1:fW+PyWYewb7DbR1NxDJQh9lgNHniyEke4Q+daoVoJqs=
 k8s.io/sample-controller v0.36.3 h1:JhixQ5omyfJPKvrCDpCiGZqNNPmKMV6OJpNCyoTkme4=
 k8s.io/sample-controller v0.36.3/go.mod h1:AU7ijPGU8NYTfx1VPB0hvrNAsLs2tGubnz8NVWB7jPU=
+k8s.io/sample-controller v0.36.4 h1:UO1Uc95NuSbX2xFonbqqOF76wASEmNRPnN3KyoWAvCM=
+k8s.io/sample-controller v0.36.4/go.mod h1:ZARCTMxIFWl4K+rRBPA+/8S1M+fpQD/CLbzRuJBLneI=
 sigs.k8s.io/yaml v1.6.0 h1:G8fkbMSAFqgEFgh4b1wmtzDnioxFCUgTZhlbj5P9QYs=
 sigs.k8s.io/yaml v1.6.0/go.mod h1:796bPqUfzR/0jLAl6XjHl3Ck7MiyVv8dbTdyT3/pMf4=
