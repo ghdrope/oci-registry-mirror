@@ -15,6 +15,20 @@
       "matchPackageNames": [
         "*"
       ]
+    },
+    {
+      "matchFileNames": [
+        ".github/workflows/**"
+      ],
+      "groupName": "GitHub Workflows",
+      "commitMessageTopic": "GitHub Workflows"
+    },
+    {
+      "matchFileNames": [
+        "go.**"
+      ],
+      "groupName": "Go Packages",
+      "commitMessageTopic": "Go Packages"
     }
   ]
 }
