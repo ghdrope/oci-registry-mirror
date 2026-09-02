@@ -1,8 +1,6 @@
 github.com/cpuguy83/go-md2man/v2 v2.0.6/go.mod h1:oOW0eioCTA6cOiMLiUPZOpcVxMig6NIQQ7OS05n1F4g=
 github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc h1:U9qPSI2PIWSS1VwoXQT9A3Wy9MM3WgvqSxFWenqJduM=
 github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/ghdrope/go-version v0.0.3 h1:sN+btDDQTCOYMlGYpa68UOHMtb4aHQgiWj/YvqDxgu8=
-github.com/ghdrope/go-version v0.0.3/go.mod h1:pslwl4lF/iKVEJ1qScpg0fk0bvZZRcG2n+M9GEfjKh8=
 github.com/ghdrope/go-version v0.0.4 h1:DhrJNhrUvvXx01WBzXdJUstB1JquoKSeUhWMFxCnTEw=
 github.com/ghdrope/go-version v0.0.4/go.mod h1:pslwl4lF/iKVEJ1qScpg0fk0bvZZRcG2n+M9GEfjKh8=
 github.com/google/go-cmp v0.5.9 h1:O2Tfq5qg4qc4AmwVlvv0oLiVAGB7enBSJ2x2DqQFi38=
@@ -32,10 +30,6 @@ gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
 gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
-k8s.io/sample-controller v0.36.2 h1:rMHn1voCuJD3cpS/3EM91UGFU2NH73DUHjIhBJAOqN8=
-k8s.io/sample-controller v0.36.2/go.mod h1:fW+PyWYewb7DbR1NxDJQh9lgNHniyEke4Q+daoVoJqs=
-k8s.io/sample-controller v0.36.3 h1:JhixQ5omyfJPKvrCDpCiGZqNNPmKMV6OJpNCyoTkme4=
-k8s.io/sample-controller v0.36.3/go.mod h1:AU7ijPGU8NYTfx1VPB0hvrNAsLs2tGubnz8NVWB7jPU=
 k8s.io/sample-controller v0.36.4 h1:UO1Uc95NuSbX2xFonbqqOF76wASEmNRPnN3KyoWAvCM=
 k8s.io/sample-controller v0.36.4/go.mod h1:ZARCTMxIFWl4K+rRBPA+/8S1M+fpQD/CLbzRuJBLneI=
 sigs.k8s.io/yaml v1.6.0 h1:G8fkbMSAFqgEFgh4b1wmtzDnioxFCUgTZhlbj5P9QYs=

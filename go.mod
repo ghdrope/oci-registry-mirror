@@ -1,6 +1,6 @@
 module github.com/ghdrope/oci-registry-mirror
 
-go 1.26.5
+go 1.27
 
 require (
 	github.com/ghdrope/go-version v0.0.4
