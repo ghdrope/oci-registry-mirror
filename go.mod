@@ -3,7 +3,7 @@ module github.com/ghdrope/oci-registry-mirror
 go 1.27
 
 require (
-	github.com/ghdrope/go-version v0.0.4
+	github.com/ghdrope/go-version v0.0.5
 	github.com/spf13/cobra v1.10.2
 	go.uber.org/zap v1.28.0
 	k8s.io/sample-controller v0.37.0
