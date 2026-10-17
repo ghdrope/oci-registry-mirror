@@ -1,0 +1,24 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - development
+    paths:
+      - 'Makefile'
+      - '.github/workflows/**/*'
+      - 'cmd/**/*'
+      - 'internal/**/*'
+      - 'pkg/**/*'
+      - 'go.mod'
+      - 'go.sum'
+      - 'Dockerfile'
+
+permissions: {}
+  
+jobs:
+  feat-ci-push:
+    uses: ghdrope/templates-ci/.github/workflows/docker-docker_dev.yml@latest
+    permissions:
+      contents: read
+      packages: write
