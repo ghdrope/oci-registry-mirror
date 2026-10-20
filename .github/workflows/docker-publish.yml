@@ -11,7 +11,7 @@ permissions: {}
   
 jobs:
   feat-ci-push:
-    uses: ghdrope/templates-ci/.github/workflows/docker-docker_publish.yml@latest
+    uses: ghdrope/templates-ci/.github/workflows/docker-docker_publish.yml@main
     permissions:
       contents: read
       packages: write
