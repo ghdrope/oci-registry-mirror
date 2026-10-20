@@ -19,6 +19,6 @@ permissions: {}
 
 jobs:
   feat-ci-push:
-    uses: ghdrope/templates-ci/.github/workflows/go-feat_ci_push.yml@latest
+    uses: ghdrope/templates-ci/.github/workflows/go-feat_ci_push.yml@main
     permissions:
       contents: read
