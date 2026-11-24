@@ -14,7 +14,7 @@ func newMirrorCommand() *cobra.Command {
 		Use:   "mirror",
 		Short: "Start OCI registry image mirror process",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			return runMirror(cmd.Context(), dryRun)
+			return runMirror(cmd.Context(), configPath, dryRun)
 		},
 	}
 

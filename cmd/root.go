@@ -3,8 +3,12 @@ package main
 import (
 	"context"
 
+	"github.com/ghdrope/oci-registry-mirror/internal/config"
 	"github.com/spf13/cobra"
 )
+
+// configPath is the images file used by the mirror and scan commands.
+var configPath string
 
 // rootCmd defines the base CLI endpoint.
 //
@@ -31,6 +35,8 @@ func Execute(ctx context.Context) error {
 }
 
 func init() {
+	rootCmd.PersistentFlags().StringVar(&configPath, "config", config.DefaultPath, "Path to the images file")
+
 	// Register runtime subcommands
 	rootCmd.AddCommand(newMirrorCommand())
 	rootCmd.AddCommand(newScanCommand())

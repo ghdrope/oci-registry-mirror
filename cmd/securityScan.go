@@ -12,7 +12,7 @@ func newScanCommand() *cobra.Command {
 		Use:   "scan",
 		Short: "Scan listed images for HIGH and CRITICAL vulnerabilities",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			return runScan(cmd.Context())
+			return runScan(cmd.Context(), configPath)
 		},
 	}
 
