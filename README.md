@@ -47,9 +47,15 @@ Start copying the missing images to your private destination registry.
 oci-registry-mirror mirror
 ```
 
+Each image is copied with all its platforms (multi-arch) to its own tag and to `latest`. An image whose tag already exists at the destination is skipped. Images with `tag: latest` are copied on every run, since that tag moves.
+
 Optional:
 
-- `--dry-run` - Show what would be copied without executing actual image copies.
+- `--dry-run` - Show what would be copied without executing actual image copies. The destination is still checked, so wrong credentials fail the run.
+
+### Options
+
+- `--config` - Path to the images file (default: `images.yaml`).
 
 ## Automation with Renovate
 
@@ -57,7 +63,7 @@ You can automate image updates by coupling this tool with [Renovate](https://doc
 
 ```json
 {
-  "$schema": "[https://docs.renovatebot.com/renovate-schema.json](https://docs.renovatebot.com/renovate-schema.json)",
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "customManagers": [
     {
       "customType": "regex",

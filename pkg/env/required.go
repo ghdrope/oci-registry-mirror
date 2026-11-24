@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-// missingError is required when a required environment variable
+// MissingError is returned when a required environment variable
 // is not set or is empty.
 type MissingError struct {
 	Key string
