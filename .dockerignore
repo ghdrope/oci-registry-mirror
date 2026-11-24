@@ -1,0 +1,7 @@
+.git
+.github
+.bin
+.cache
+.reports
+charts
+**/__debug_bin*

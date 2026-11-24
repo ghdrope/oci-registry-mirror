@@ -82,3 +82,11 @@ func TestMust(t *testing.T) {
 		_ = Must("MISSING_KEY")
 	})
 }
+
+// TestMissingErrorMessage verifies the error names the missing variable.
+func TestMissingErrorMessage(t *testing.T) {
+	want := `environment variable "REGISTRY_PASSWORD" is required but not set`
+	if got := (MissingError{Key: "REGISTRY_PASSWORD"}).Error(); got != want {
+		t.Errorf("MissingError.Error() = %q; want %q", got, want)
+	}
+}

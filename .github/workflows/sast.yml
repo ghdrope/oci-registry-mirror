@@ -20,7 +20,7 @@ on:
     branches:
       - development
       - main
-      - 'release-*.*.*'
+      - '*.*.*-rc*'
     paths:
       - 'Makefile'
       - '.github/workflows/**/*'
@@ -29,7 +29,7 @@ on:
       - 'pkg/**/*'
       - 'go.mod'
       - 'go.sum'
-      - 'Docker/**/*'
+      - 'Dockerfile'
 
 permissions:
   contents: read
