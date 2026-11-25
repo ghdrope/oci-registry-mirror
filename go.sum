@@ -32,5 +32,7 @@ gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
 gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
 k8s.io/sample-controller v0.37.2 h1:chPd/KyfpjGYcI4ZEss//yJ09YHuRyMT2TK01I3wtD4=
 k8s.io/sample-controller v0.37.2/go.mod h1:V0iqE9l3sosmbx7AglnwKRwC6JFBqL69g4+tQWl8mho=
+k8s.io/sample-controller v0.37.3 h1:iP41iJRzI00gmAdiKlMfHVc9DIMimh9GbSSupCl8D4A=
+k8s.io/sample-controller v0.37.3/go.mod h1:fqZ9vEv4UoRyUB+6QQMXyMpZTqJs2wPXs1kNeZHMGls=
 sigs.k8s.io/yaml v1.6.0 h1:G8fkbMSAFqgEFgh4b1wmtzDnioxFCUgTZhlbj5P9QYs=
 sigs.k8s.io/yaml v1.6.0/go.mod h1:796bPqUfzR/0jLAl6XjHl3Ck7MiyVv8dbTdyT3/pMf4=
